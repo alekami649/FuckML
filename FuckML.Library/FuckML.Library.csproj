@@ -1,0 +1,34 @@
+﻿
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<PackageId>$(SolutionName)</PackageId>
+		<Title>$(SolutionName)</Title>
+		<Authors>alekami649</Authors>
+		<Company>alekami649</Company>
+		<Product>$(SolutionName)</Product>
+		<RepositoryType>git</RepositoryType>
+		<NeutralLanguage>en-US</NeutralLanguage>
+		<AnalysisLevel>6.0-all</AnalysisLevel>
+		<Version>0.3.1.4</Version>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<RootNamespace>FuckML</RootNamespace>
+		<PackageReadmeFile>readme.md</PackageReadmeFile>
+		<PackageLicenseFile>license</PackageLicenseFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Include="readme.md" Pack="true" PackagePath="\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Update="license">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	</ItemGroup>
+
+</Project>
