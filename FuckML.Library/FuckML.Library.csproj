@@ -18,6 +18,11 @@
 		<RootNamespace>FuckML</RootNamespace>
 		<PackageReadmeFile>readme.md</PackageReadmeFile>
 		<PackageLicenseFile>license</PackageLicenseFile>
+		<Description>A simple obsense finder.</Description>
+		<Copyright>Copyright © 2023 Alexey Moiseev</Copyright>
+		<PackageProjectUrl>https://github.com/alekami649/FuckML</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/alekami649/FuckML</RepositoryUrl>
+		<PackageIcon>logo.jpg</PackageIcon>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -26,6 +31,10 @@
 
 	<ItemGroup>
 	  <None Update="license">
+	    <Pack>True</Pack>
+	    <PackagePath>\</PackagePath>
+	  </None>
+	  <None Update="logo.jpg">
 	    <Pack>True</Pack>
 	    <PackagePath>\</PackagePath>
 	  </None>
