@@ -39,6 +39,19 @@
                 return true;
             #endregion
 
+            #region Russian-Only Error Obsense
+            if (msg.Contains("зуе") || msg.Contains("зуй") || msg.Contains("наз"))
+                return true;
+            else if (msg.Contains("член"))
+                return true;
+            else if (msg.Contains("бля"))
+                return true;
+            else if (msg.Contains("пиз"))
+                return true;
+            else if (msg.Contains("еб") || msg.Contains("ёб"))
+                return true;
+            #endregion
+
             #region Russian-English One-Design Obsense
             if (msg.Contains("xye") || msg.Contains("xyй") || msg.Contains("нaх"))
                 return true;
