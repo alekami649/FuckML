@@ -1,9 +1,13 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using FuckML.ImageSearchers;
 using FuckML.Searchers;
 
 Console.WriteLine("Hello, World!");
 
 var searcher = new QuickSearcher();
+
+var image = new QuickImageSearcher();
+Console.WriteLine(image.ContainsObsense("fuck.png"));
 
 while (true)
 {
