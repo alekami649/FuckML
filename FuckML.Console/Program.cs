@@ -6,9 +6,6 @@ Console.WriteLine("Hello, World!");
 
 var searcher = new QuickSearcher();
 
-var image = new QuickImageSearcher();
-Console.WriteLine(image.ContainsObsense("fuck.png"));
-
 while (true)
 {
     Console.WriteLine("Введите строку для проверки на маты: ");

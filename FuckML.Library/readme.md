@@ -1,16 +1,5 @@
 # F*ckML - a library to searching for obsense in messages.
-## Installation
 
-Open _PowerShell For Developers_ and write this code:
+Have got any issuses write to [Github Project Page](https://github.com/alekami649/FuckML/issuses)
 
-`dotnet add package FuckML`
-
-You successfully installed F*ckML nuget package.
-
-## Getting Started
-
-Add `using FuckML.Searchers`
-
-Create an instance of `FuckML.Searchers.QuickSearcher`
-
-Get the result by calling `quickSearcher.ContainsObsense(textToCheckForObsense.ToLower())`
+Documentation avaible on [Github](https://github.com/alekami649/FuckML/wiki)

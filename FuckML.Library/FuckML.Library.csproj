@@ -13,7 +13,7 @@
 		<RepositoryType>git</RepositoryType>
 		<NeutralLanguage>en-US</NeutralLanguage>
 		<AnalysisLevel>6.0-all</AnalysisLevel>
-		<Version>0.5.1.1</Version>
+		<Version>0.5.1.2</Version>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
 		<RootNamespace>FuckML</RootNamespace>
 		<PackageReadmeFile>readme.md</PackageReadmeFile>

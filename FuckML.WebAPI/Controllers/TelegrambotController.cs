@@ -50,6 +50,23 @@ namespace FuckML.WebAPI.Controllers
                             await botClient.DeleteMessageAsync(update.Message.Chat.Id, update.Message.MessageId);
                         }
                     }
+                    else if (update.Message.Type == MessageType.Photo && update.Message.Photo != null && update.Message.Caption != null)
+                    {
+                        if (quickSearcher.ContainsObscene(update.Message.Caption))
+                        {
+                            await botClient.DeleteMessageAsync(update.Message.Chat.Id, update.Message.MessageId);
+                        }
+                        else
+                        {
+                            var fileInfo = await botClient.GetFileAsync(update.Message.Photo[0].FileId);
+                            var stream = new MemoryStream();
+                            await botClient.DownloadFileAsync(fileInfo.FilePath ?? "", stream);
+                            if (quickImageSearcher.ContainsObsense(stream.ToArray()))
+                            {
+                                await botClient.DeleteMessageAsync(update.Message.Chat.Id, update.Message.MessageId);
+                            }
+                        }
+                    }
                     else if (update.Message.Type == MessageType.Sticker && update.Message.Sticker != null)
                     {
                         var fileInfo = await botClient.GetFileAsync(update.Message.Sticker.FileId);
@@ -68,6 +85,23 @@ namespace FuckML.WebAPI.Controllers
                         if (quickSearcher.ContainsObscene(update.EditedMessage.Text.ToLowerInvariant()))
                         {
                             await botClient.DeleteMessageAsync(update.EditedMessage.Chat.Id, update.EditedMessage.MessageId);
+                        }
+                    }
+                    else if (update.EditedMessage.Type == MessageType.Photo && update.EditedMessage.Photo != null && update.EditedMessage.Caption != null)
+                    {
+                        if (quickSearcher.ContainsObscene(update.EditedMessage.Caption))
+                        {
+                            await botClient.DeleteMessageAsync(update.EditedMessage.Chat.Id, update.EditedMessage.MessageId);
+                        }
+                        else
+                        {
+                            var fileInfo = await botClient.GetFileAsync(update.EditedMessage.Photo[0].FileId);
+                            var stream = new MemoryStream();
+                            await botClient.DownloadFileAsync(fileInfo.FilePath ?? "", stream);
+                            if (quickImageSearcher.ContainsObsense(stream.ToArray()))
+                            {
+                                await botClient.DeleteMessageAsync(update.EditedMessage.Chat.Id, update.EditedMessage.MessageId);
+                            }
                         }
                     }
                 }

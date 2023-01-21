@@ -14,7 +14,7 @@ namespace FuckML.Searchers
                 return true;
 
             var options = RegexOptions.IgnorePatternWhitespace | RegexOptions.IgnoreCase;
-            var regex = new Regex("(^з(а|a)л(у|y)п(а|a))|(^(х|x)(у|y)(е|e|й|и))|(^чл(е|e)н)|(^пизд)|(^(е|e|ё)б)|(^с|cу|yк)|(^бл)", options);
+            var regex = new Regex("(^[\\s\\S]*з(а|a)л(у|y)п[\\s\\S]*$)|(^[\\s\\S]*(х|x|з)(у|y)(е|e|й|и|)[\\s\\S]*$)|(^[\\s\\S]*чл(е|e)н[\\s\\S]*$)|(^[\\s\\S]*пизд[\\s\\S]*$)|(^[\\s\\S]*(е|e|ё)б)[\\s\\S]*$|(^[\\s\\S]*(с|c)(у|y)к[\\s\\S]*$)|(^бл[\\s\\S]*$)", options);
 
             if (regex.IsMatch(msg))
                 return true;
@@ -34,7 +34,5 @@ namespace FuckML.Searchers
         {
             throw new NotImplementedException();
         }
-
-        
     }
 }
