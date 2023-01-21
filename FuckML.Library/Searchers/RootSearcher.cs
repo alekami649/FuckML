@@ -1,4 +1,6 @@
-﻿namespace FuckML.Searchers
+﻿using System.Text.RegularExpressions;
+
+namespace FuckML.Searchers
 {
     public class RootSearcher : ISearcher
     {
@@ -11,68 +13,11 @@
             if (msg.Contains("**"))
                 return true;
 
-            #region Russain-Only Obsense
-            if (msg.Contains("хуе") || msg.Contains("хуй") || msg.Contains("нах"))
-                return true;
-            else if (msg.Contains("член"))
-                return true;
-            else if (msg.Contains("бля"))
-                return true;
-            else if (msg.Contains("пиз"))
-                return true;
-            else if (msg.Contains("еб") || msg.Contains("ёб"))
-                return true;
-            #endregion
+            var options = RegexOptions.IgnorePatternWhitespace | RegexOptions.IgnoreCase;
+            var regex = new Regex("(^з(а|a)л(у|y)п(а|a))|(^(х|x)(у|y)(е|e|й|и))|(^чл(е|e)н)|(^пизд)|(^(е|e|ё)б)|(^с|cу|yк)|(^бл)", options);
 
-            #region Russain-Only Asterisk Obsense
-            if (msg.Contains("*уе") || msg.Contains("х*е") || msg.Contains("ху*"))
+            if (regex.IsMatch(msg))
                 return true;
-            else if (msg.Contains("*уй") || msg.Contains("х*й") || msg.Contains("ху*"))
-                return true;
-            else if (msg.Contains("*лен") || msg.Contains("ч*ен")  || msg.Contains("чл*н") || msg.Contains("чле*"))
-                return true;
-            else if (msg.Contains("*ля") || msg.Contains("б*я") || msg.Contains("бл*"))
-                return true;
-            else if (msg.Contains("п**") || msg.Contains("п*з") || msg.Contains("пи*"))
-                return true;
-            else if (msg.Contains("е*") || msg.Contains("ё*") || msg.Contains("*б"))
-                return true;
-            #endregion
-
-            #region Russian-Only Error Obsense
-            if (msg.Contains("зуе") || msg.Contains("зуй") || msg.Contains("наз"))
-                return true;
-            else if (msg.Contains("член"))
-                return true;
-            else if (msg.Contains("бля"))
-                return true;
-            else if (msg.Contains("пиз"))
-                return true;
-            else if (msg.Contains("еб") || msg.Contains("ёб"))
-                return true;
-            #endregion
-
-            #region Russian-English One-Design Obsense
-            if (msg.Contains("xye") || msg.Contains("xyй") || msg.Contains("нaх"))
-                return true;
-            else if (msg.Contains("члeн"))
-                return true;
-            else if (msg.Contains("eб"))
-                return true;
-            #endregion
-
-            #region Russian-English Translit Obsense
-            if (msg.Contains("xyi"))
-                return true;
-            else if (msg.Contains("chlen"))
-                return true;
-            else if (msg.Contains("blya"))
-                return true;
-            else if (msg.Contains("piz"))
-                return true;
-            else if (msg.Contains("eb"))
-                return true;
-            #endregion
 
             #region English-Only Obsense
             if (msg.Contains("fuck"))
@@ -89,5 +34,7 @@
         {
             throw new NotImplementedException();
         }
+
+        
     }
 }

@@ -1,6 +1,8 @@
 ﻿using FuckML.ImageSearchers;
 using FuckML.Searchers;
+using FuckML.WebAPI.Settings;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using Telegram.Bot;
 using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
@@ -13,11 +15,19 @@ namespace FuckML.WebAPI.Controllers
         static TelegramBotClient botClient { get; set; }
         static QuickSearcher quickSearcher { get; set; }
         static QuickImageSearcher quickImageSearcher { get; set; }
+        static HttpClient httpClient { get; set; }
         static object _lock { get; set; }
 
         static TelegrambotController()
         {
-            botClient = new(System.IO.File.ReadAllText("token.cfg"));
+            httpClient = new();
+            var request = new HttpRequestMessage(HttpMethod.Get, new Uri("https://api.doppler.com/v3/configs/config/secret?project=ANTI-OBSENSE&config=prd_tgbot&name=TOKEN"));
+            request.Headers.Add("accept", "application/json");
+            request.Headers.Add("authorization", $"Bearer {System.IO.File.ReadAllText("token.cfg")}");
+            var response = httpClient.Send(request);
+            var tokenInfo = JsonConvert.DeserializeObject<DopplerValueReturn>(response.Content.ReadAsStringAsync().Result) ?? new();
+
+            botClient = new(tokenInfo.Value.Computed);
 
             quickSearcher = new();
             quickImageSearcher = new(false);

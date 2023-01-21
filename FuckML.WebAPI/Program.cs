@@ -1,6 +1,8 @@
-var builder = WebApplication.CreateBuilder(args);
+using FuckML.WebAPI.Settings;
+using Newtonsoft.Json;
+using System.Net;
 
-// Add services to the container.
+var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers().AddNewtonsoftJson();
 builder.Services.AddEndpointsApiExplorer();
